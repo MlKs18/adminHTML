@@ -3,33 +3,18 @@ import axios from 'axios';
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { PRIVATE_ROUTS_VALUE } from '@/enums';
+import { useStore } from 'vuex';
+const store = useStore();
 const router = useRouter();
 
 const goToEdit = (id) => {
   router.push({ name: PRIVATE_ROUTS_VALUE.editUser, params: { id } });
 };
-const data = ref([]);
-const loading = ref(false);
-const error = ref(null);
-const URL = 'https://jsonplaceholder.typicode.com/users';
 
-const getUsers = async () => {
-  loading.value = true;
-  error.value = null;
-  try {
-    const response = await axios.get(URL);
-    data.value = response.data;
-    console.log('Получено:', response.data);
-  } catch (err) {
-    error.value = err;
-    console.error('Ошибка:', err);
-  } finally {
-    loading.value = false;
-  }
-};
+
 
 onMounted(() => {
-  getUsers();
+  store.dispatch('users/fetchUsers');
 });
 </script>
 

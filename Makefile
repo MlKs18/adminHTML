@@ -9,7 +9,7 @@ stop:
 fpm:
 	docker exec -it api-app bash
 
-client1:
-	docker exec -it client-next-pizza sh
+c1:
+	docker exec -it client-app sh
 
 	
