@@ -29,23 +29,23 @@ onMounted(() => {
                 <th>name</th>
                 <th>email</th>
                 <th>Axtions</th>
-            </tr>    
+            </tr>
         </thead>
-        <tbody> 
+        <tbody>
             <tr v-for="user in data" :key="user.id">
                 <td>{{ user.id }}</td>
                 <td>{{ user.name }}</td>
                 <td>{{user.email}}</td>
                 <td>
                     <div class="btn-wrapper">
-                        <button 
+                        <button
                         @click="goToEdit(user.id)"
                         class="edit-btn">edit</button>
                         <button class="delete-btn">delete</button>
                     </div>
-                    
+
                 </td>
-            </tr>   
+            </tr>
          </tbody>
     </table>
 
@@ -61,11 +61,11 @@ onMounted(() => {
     }
 
     .btn-wrapper {
-        width: 180px; 
+        width: 180px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-    
+
 
         button {
             padding: 5px 20px;
@@ -90,7 +90,7 @@ onMounted(() => {
         }
     }
 }
-    
+
 
 
 </style>

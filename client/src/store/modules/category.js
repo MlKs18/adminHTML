@@ -1,4 +1,3 @@
-import { Module, ActionContext } from 'vuex';
 
 const categoryModule = {
   namespaced: true,
