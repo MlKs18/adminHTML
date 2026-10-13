@@ -67,7 +67,7 @@ services:
             - app_network
 
     client:
-        image: node:18-alpine
+        image: node:22-alpine
         container_name: client-app
         tty: true
         volumes:
@@ -83,8 +83,7 @@ services:
         depends_on:
             - api
         ports:
-            - "3000:3000"
-            - "24678:24678"
+            - "5173:5173"
 
 networks:
     app_network:
