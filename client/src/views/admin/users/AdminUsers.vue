@@ -1,6 +1,6 @@
 <script setup>
 import axios from 'axios';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { PRIVATE_ROUTS_VALUE } from '@/enums';
 import { useStore } from 'vuex';
@@ -8,7 +8,8 @@ const store = useStore();
 const router = useRouter();
 
 const goToEdit = (id) => {
-  router.push({ name: PRIVATE_ROUTS_VALUE.editUser, params: { id } });
+    console.log(id);
+  router.push({ name: PRIVATE_ROUTS_VALUE.editUsers, params: { id } });
 };
 
 
@@ -16,6 +17,7 @@ const goToEdit = (id) => {
 onMounted(() => {
   store.dispatch('users/fetchUsers');
 });
+const users = computed(() => store.getters['users/getItems']);
 </script>
 
 <template>
@@ -32,7 +34,7 @@ onMounted(() => {
             </tr>
         </thead>
         <tbody>
-            <tr v-for="user in data" :key="user.id">
+            <tr v-for="user in users" :key="user.id">
                 <td>{{ user.id }}</td>
                 <td>{{ user.name }}</td>
                 <td>{{user.email}}</td>

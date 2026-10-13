@@ -30,9 +30,8 @@ const userModule = {
         const response = await fetch(ROUTE_API.users);
         if (!response.ok) throw new Error('Network error');
         const data = await response.json();
-        console.log("data from bek", data);
         // Сохраняем полученные данные в локальном состоянии
-        commit('setItems', data);
+        commit('setItems', data.data);
       } catch (error) {
         console.error('Ошибка загрузки:', error);
         // Можно добавить обработку ошибок (например, мутацию setError)
