@@ -8,8 +8,7 @@ const store = useStore();
 const router = useRouter();
 
 const goToEdit = (id) => {
-    console.log(id);
-  router.push({ name: PRIVATE_ROUTS_VALUE.editUsers, params: { id } });
+  router.push({ path: PRIVATE_ROUTS_VALUE.editUsers, params: { id } });
 };
 
 
@@ -18,6 +17,9 @@ onMounted(() => {
   store.dispatch('users/fetchUsers');
 });
 const users = computed(() => store.getters['users/getItems']);
+const deleteUser = (id) => {
+    store.dispatch('users/deleteItem', id);
+}
 </script>
 
 <template>
@@ -43,7 +45,7 @@ const users = computed(() => store.getters['users/getItems']);
                         <button
                         @click="goToEdit(user.id)"
                         class="edit-btn">edit</button>
-                        <button class="delete-btn">delete</button>
+                        <button class="delete-btn" @click="deleteUser(user.id)">delete</button>
                     </div>
 
                 </td>

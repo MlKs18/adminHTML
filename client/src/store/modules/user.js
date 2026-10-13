@@ -41,19 +41,20 @@ const userModule = {
       }
     },
 
-    // Пример другого действия (создание категории)
-    async createCategory({ commit }, newCategory) {
+    async deleteItem({state, commit }, id) {
+      
       commit('setLoading', true, { root: true });
 
       try {
-        const response = await fetch('/api/categories', {
-          method: 'POST',
+        // Имитация запроса к API
+        const response = await fetch(`${ROUTE_API.users}/${id}`, {
+          method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(newCategory),
         });
-        const created = await response.json();
-        // Можно добавить новую категорию в список без перезагрузки
-        // commit('addItem', created); // если есть мутация addItem
+        const items = state.items.filter(item => item.id !== id);
+        commit('setItems', items);
+      } catch (error) {
+        console.error('Ошибка загрузки:', error);
       } finally {
         commit('setLoading', false, { root: true });
       }
