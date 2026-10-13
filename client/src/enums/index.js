@@ -11,6 +11,9 @@ export const AUTH_ROUTS_VALUE = {
 
 export const PUBLIC_ROUTS_VALUE = {
     home: '/',
+    categories: '/categories',
     catalog: '/catalog',
     about: '/about',
+    product: '/product',
+    curt: '/curt',
 };
