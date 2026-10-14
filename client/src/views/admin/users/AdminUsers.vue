@@ -8,7 +8,7 @@ const store = useStore();
 const router = useRouter();
 
 const goToEdit = (id) => {
-  router.push({ path: PRIVATE_ROUTS_VALUE.editUsers, params: { id } });
+  router.push({ name: 'editUser', params: { id } });
 };
 
 

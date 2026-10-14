@@ -7,22 +7,21 @@ import AdminTopbar from '@/components/AdminTopbar.vue';
 </script>
 
 <template>
-  
+
 
   <div class="layout">
 
   <!-- ==== SIDEBAR ==== -->
-    
+
     <AdminSitebare/>
   <!-- ==== MAIN ==== -->
   <slot/>
 
 </div>
-<slot/>
 </template>
 
 <style>
- 
 
- 
+
+
 </style>
