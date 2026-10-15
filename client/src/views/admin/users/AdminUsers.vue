@@ -1,6 +1,6 @@
 <script setup>
 import axios from 'axios';
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { PRIVATE_ROUTS_VALUE } from '@/enums';
 import { useStore } from 'vuex';
@@ -20,6 +20,7 @@ const users = computed(() => store.getters['users/getItems']);
 const deleteUser = (id) => {
     store.dispatch('users/deleteItem', id);
 }
+
 </script>
 
 <template>

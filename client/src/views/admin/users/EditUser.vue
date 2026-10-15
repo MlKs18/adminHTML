@@ -1,6 +1,42 @@
+<script setup>
+import axios from 'axios';
+import { ref, onMounted, computed, watch } from 'vue';
+import { useRouter } from 'vue-router';
+import { PRIVATE_ROUTS_VALUE } from '@/enums';
+import { useStore } from 'vuex';
+const store = useStore();
+const router = useRouter();
+store.dispatch('users/fetchUser',router.currentRoute.value.params.id);
+const user = computed(() => store.getters['users/getItem']);
+//const user = users.find(item => item.id == router.currentRoute.value.params.id);
+console.log(user.value);
+const form = {
+  name:"",
+  email: "",
+}
+
+watch(
+    () => user.value,
+    (newVal, oldVal) => {
+      console.log(newVal, oldVal)
+      if (newVal ) {
+        form.name = newVal.name;
+        form.email = newVal.email;
+       console.log(form)
+
+      }
+      
+    },
+    {deep: true}
+);
+
+</script>
 <template>
-  <div class="edit-user">
+  <div
+  v-if="user"
+  class="edit-user">
     <h1 class="edit-user__title">Редактирование пользователя</h1>
+    
 
     <form class="edit-user__form">
       <!-- Аватар -->
@@ -35,6 +71,7 @@
       <div class="form-group">
         <label for="name" class="form-label">Имя</label>
         <input
+            v-model="form.name"
             id="name"
             type="text"
             class="form-input"
@@ -45,13 +82,14 @@
       <div class="form-group">
         <label for="email" class="form-label">Email</label>
         <input
+            v-model="form.email"
             id="email"
             type="email"
             class="form-input"
             placeholder="user@example.com"
         />
       </div>
-
+      <h1>{{ form.name }}</h1>
       <!-- Соцсети и мессенджеры -->
       <fieldset class="form-group form-group--full socials">
         <legend class="form-label">Контакты и соцсети</legend>
