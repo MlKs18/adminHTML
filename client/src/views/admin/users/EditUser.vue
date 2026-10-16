@@ -10,22 +10,22 @@ store.dispatch('users/fetchUser',router.currentRoute.value.params.id);
 const user = computed(() => store.getters['users/getItem']);
 //const user = users.find(item => item.id == router.currentRoute.value.params.id);
 console.log(user.value);
-const form = {
+const form = ref( {
   name:"",
   email: "",
-}
+})
 
 watch(
     () => user.value,
     (newVal, oldVal) => {
       console.log(newVal, oldVal)
       if (newVal ) {
-        form.name = newVal.name;
-        form.email = newVal.email;
+        form.value.name = newVal.name;
+        form.value.email = newVal.email;
        console.log(form)
 
       }
-      
+
     },
     {deep: true}
 );
@@ -36,7 +36,7 @@ watch(
   v-if="user"
   class="edit-user">
     <h1 class="edit-user__title">Редактирование пользователя</h1>
-    
+
 
     <form class="edit-user__form">
       <!-- Аватар -->
