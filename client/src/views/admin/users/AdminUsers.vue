@@ -4,6 +4,7 @@ import { ref, onMounted, computed, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { PRIVATE_ROUTS_VALUE } from '@/enums';
 import { useStore } from 'vuex';
+import LoadingVue from "@/components/LoadingVue.vue";
 const store = useStore();
 const router = useRouter();
 
@@ -17,6 +18,8 @@ onMounted(() => {
   store.dispatch('users/fetchUsers');
 });
 const users = computed(() => store.getters['users/getItems']);
+const isLoading = computed(() => store.getters['isLoading']);
+console.log(isLoading.value)
 const deleteUser = (id) => {
     store.dispatch('users/deleteItem', id);
 }
@@ -37,20 +40,31 @@ const deleteUser = (id) => {
             </tr>
         </thead>
         <tbody>
-            <tr v-for="user in users" :key="user.id">
-                <td>{{ user.id }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{user.email}}</td>
-                <td>
-                    <div class="btn-wrapper">
-                        <button
-                        @click="goToEdit(user.id)"
-                        class="edit-btn">edit</button>
-                        <button class="delete-btn" @click="deleteUser(user.id)">delete</button>
-                    </div>
+            <template v-if="isLoading">
+              <tr>
+                <td><LoadingVue/></td>
+                <td><LoadingVue/></td>
+                <td><LoadingVue/></td>
+                <td><LoadingVue/></td>
+              </tr>
 
-                </td>
-            </tr>
+            </template>
+            <template v-else>
+              <tr v-for="user in users" :key="user.id">
+                  <td>{{ user.id }}</td>
+                  <td>{{ user.name }}</td>
+                  <td>{{user.email}}</td>
+                  <td>
+                      <div class="btn-wrapper">
+                          <button
+                          @click="goToEdit(user.id)"
+                          class="edit-btn">edit</button>
+                          <button class="delete-btn" @click="deleteUser(user.id)">delete</button>
+                      </div>
+
+                  </td>
+              </tr>
+            </template>
          </tbody>
     </table>
 

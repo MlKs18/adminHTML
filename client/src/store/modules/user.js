@@ -6,7 +6,7 @@ const userModule = {
   state: () => ({
     items: [],
     item: null
-  
+
   }),
   getters: {
      getItem(state) {
@@ -29,25 +29,39 @@ const userModule = {
   },
 
   actions: {
-    // Асинхронное получение категорий
     async fetchUsers({ commit }) {
-      // Включаем глобальный loading через корневую мутацию
       commit('setLoading', true, { root: true });
+      setTimeout(async ()=>{
+        try {
+          // Имитация запроса к API
+          const response = await fetch(ROUTE_API.users);
+          if (!response.ok) throw new Error('Network error');
+          const data = await response.json();
+          // Сохраняем полученные данные в локальном состоянии
+          commit('setItems', data.data);
+        } catch (error) {
+          console.error('Ошибка загрузки:', error);
+          // Можно добавить обработку ошибок (например, мутацию setError)
+        } finally {
+          // Выключаем loading в любом случае (успех или ошибка)
+          commit('setLoading', false, { root: true });
+        }
+      }, 5000)
 
-      try {
-        // Имитация запроса к API
-        const response = await fetch(ROUTE_API.users);
-        if (!response.ok) throw new Error('Network error');
-        const data = await response.json();
-        // Сохраняем полученные данные в локальном состоянии
-        commit('setItems', data.data);
-      } catch (error) {
-        console.error('Ошибка загрузки:', error);
-        // Можно добавить обработку ошибок (например, мутацию setError)
-      } finally {
-        // Выключаем loading в любом случае (успех или ошибка)
-        commit('setLoading', false, { root: true });
-      }
+      // try {
+      //   // Имитация запроса к API
+      //   const response = await fetch(ROUTE_API.users);
+      //   if (!response.ok) throw new Error('Network error');
+      //   const data = await response.json();
+      //   // Сохраняем полученные данные в локальном состоянии
+      //   commit('setItems', data.data);
+      // } catch (error) {
+      //   console.error('Ошибка загрузки:', error);
+      //   // Можно добавить обработку ошибок (например, мутацию setError)
+      // } finally {
+      //   // Выключаем loading в любом случае (успех или ошибка)
+      //   commit('setLoading', false, { root: true });
+      // }
     },
     async fetchUser({ commit },id) {
       // Включаем глобальный loading через корневую мутацию
@@ -70,7 +84,7 @@ const userModule = {
     },
 
     async deleteItem({state, commit }, id) {
-      
+
       commit('setLoading', true, { root: true });
 
       try {
