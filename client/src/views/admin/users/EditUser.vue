@@ -4,6 +4,7 @@ import { ref, onMounted, computed, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { PRIVATE_ROUTS_VALUE } from '@/enums';
 import { useStore } from 'vuex';
+import LoadingVue from "@/components/LoadingVue.vue";
 const store = useStore();
 const router = useRouter();
 store.dispatch('users/fetchUser',router.currentRoute.value.params.id);
@@ -14,6 +15,14 @@ const form = ref( {
   name:"",
   email: "",
 })
+const isLoading = computed(() => store.getters['isLoading']);
+const editUser = () => {
+  store.dispatch("users/editUser",{
+    id: router.currentRoute.value.params.id, 
+    dataForm:form.value});
+}
+const errorMsg = computed(() => store.getters['users/getErrorMsg']); 
+
 
 watch(
     () => user.value,
@@ -30,6 +39,7 @@ watch(
     {deep: true}
 );
 
+
 </script>
 <template>
   <div
@@ -38,7 +48,7 @@ watch(
     <h1 class="edit-user__title">Редактирование пользователя</h1>
 
 
-    <form class="edit-user__form">
+    <form class="edit-user__form" @submit.prevent ="editUser">
       <!-- Аватар -->
       <div class="form-group form-group--avatar">
         <label class="form-label">Аватар</label>
@@ -70,26 +80,33 @@ watch(
       <!-- Основные данные -->
       <div class="form-group">
         <label for="name" class="form-label">Имя</label>
+        <LoadingVue v-if="isLoading"/>
         <input
+            v-else
             v-model="form.name"
             id="name"
             type="text"
             class="form-input"
             placeholder="Иван Иванов"
         />
+       
+        <div class="errorInput" v-if="errorMsg.name">{{ errorMsg.name[0]}}</div>
       </div>
 
       <div class="form-group">
         <label for="email" class="form-label">Email</label>
+        <LoadingVue v-if="isLoading"/>
         <input
+            v-else
             v-model="form.email"
             id="email"
             type="email"
             class="form-input"
             placeholder="user@example.com"
         />
+        <div class="errorInput" v-if="errorMsg.email">{{ errorMsg.email[0]}}</div>
       </div>
-      <h1>{{ form.name }}</h1>
+      
       <!-- Соцсети и мессенджеры -->
       <fieldset class="form-group form-group--full socials">
         <legend class="form-label">Контакты и соцсети</legend>
@@ -148,6 +165,11 @@ watch(
 </template>
 
 <style scoped>
+.errorInput {
+color: red;
+background-color: yellow;
+}
+
 .edit-user {
   max-width: 720px;
   margin: 0 auto;
