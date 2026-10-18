@@ -43,7 +43,7 @@ watch(
 </script>
 <template>
   <div
-  v-if="user"
+  v-if="category"
   class="edit-user">
     <h1 class="edit-user__title">Редактирование категории</h1>
 
@@ -78,7 +78,7 @@ watch(
       </div>
 
       <!-- Основные данные -->
-      <div class="form-group">
+      <div class="form-group groupCategory">
         <label for="name" class="form-label">Название категории</label>
         <LoadingVue v-if="isLoading"/>
         <input
@@ -94,9 +94,9 @@ watch(
       </div>
 
       <div class="form-group">
-        <label for="email" class="form-label">Описание</label>
+        <label for="text" class="form-label">Описание</label>
         <LoadingVue v-if="isLoading"/>
-        <textarea>123</textarea>
+        <textarea id="text"  v-model="form.description"></textarea>
        
         <div class="errorInput" v-if="errorMsg.description">{{ errorMsg.description[0]}}</div>
       </div>
@@ -272,6 +272,11 @@ background-color: yellow;
 
 .btn--danger:hover {
   background: #fdecec;
+}
+
+.groupCategory {
+    display: flex;
+    flex-direction: column;
 }
 
 /* ---------- Адаптив ---------- */
