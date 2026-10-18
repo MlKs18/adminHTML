@@ -1,7 +1,8 @@
 export const PRIVATE_ROUTS_VALUE = {
     dashboard: '/admin',
     users: '/admin/users',
-    editUsers: '/admin/user'
+    editUsers: '/admin/user',
+    categories: '/admin/categories',
 };
 
 export const AUTH_ROUTS_VALUE = {

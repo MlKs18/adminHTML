@@ -11,7 +11,7 @@ import ProductItemFront from "@/views/ProductItemFront.vue";
 import CurtVue from "@/views/CurtVue.vue";
 import RegistrationVue from "@/views/auth/RegistrationVue.vue";
 import LoginVue from "@/views/auth/LoginVue.vue";
-
+import IndexVue from '@/views/admin/categories/IndexVue.vue'
 
 
 const router = createRouter({
@@ -29,6 +29,13 @@ const router = createRouter({
       component: AdminUsers,
       meta: { layout: AdminLayouts }
     },
+    {
+      path: PRIVATE_ROUTS_VALUE.categories,
+      name: 'categories',
+      component: IndexVue,
+      meta: { layout: AdminLayouts }
+    },
+    
     {
       path: PRIVATE_ROUTS_VALUE.editUsers+"/:id",
       name: 'editUser',
