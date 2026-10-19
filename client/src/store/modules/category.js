@@ -32,10 +32,29 @@ const categoryModule = {
     setErrorMsg(state, data) {
     state.errorMsg = data;
   }
+
     // можно добавить другие мутации
   },
 
   actions: {
+     async deleteItem({state, commit }, id) {
+
+      commit('setLoading', true, { root: true });
+
+      try {
+        // Имитация запроса к API
+        const response = await fetch(`${ROUTE_API.category}/${id}`, {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+        });
+        const items = state.items.filter(item => item.id !== id);
+        commit('setItems', items);
+      } catch (error) {
+        console.error('Ошибка загрузки:', error);
+      } finally {
+        commit('setLoading', false, { root: true });
+      }
+    },
 
     // Асинхронное получение категорий
     async fetchCategories({ commit }) {
@@ -75,7 +94,7 @@ const categoryModule = {
       }
     },
 
-    // Пример другого действия (создание категории)
+    
     async createCategory({ commit }, newCategory) {
       commit('setLoading', true, { root: true });
 
@@ -93,6 +112,41 @@ const categoryModule = {
         commit('setLoading', false, { root: true });
       }
     },
+    async editCategory({ commit }, { id, dataForm }) {
+    commit('setLoading', true, { root: true });
+
+    try {
+        const response = await fetch(`${ROUTE_API.category}/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataForm)
+        });
+
+        const payload = await response.json().catch(() => null);
+
+        if (!response.ok) {
+            if (response.status === 422 && payload?.errors) {
+                commit('setErrorMsg', payload.errors);
+            }
+
+            console.log(payload?.errors ?? payload);
+
+            return;
+        }
+
+        console.log(payload?.data);
+
+        commit('setItem', payload.data);
+
+    } catch (error) {
+        console.error('Ошибка загрузки:', error);
+
+    } finally {
+        commit('setLoading', false, { root: true });
+    }
+},
   },
 };
 

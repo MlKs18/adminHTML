@@ -21,7 +21,7 @@ const categories = computed(() => store.getters['category/getItems']);
 const isLoading = computed(() => store.getters['isLoading']);
 console.log(isLoading.value)
 const deleteCategory = (id) => {
-    store.dispatch('users/deleteItem', id);
+    store.dispatch('category/deleteItem', id);
 }
 
 </script>

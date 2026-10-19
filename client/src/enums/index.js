@@ -17,4 +17,5 @@ export const PUBLIC_ROUTS_VALUE = {
     about: '/about',
     product: '/product',
     curt: '/curt',
+    test: '/test123'
 };

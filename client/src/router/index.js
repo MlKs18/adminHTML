@@ -94,6 +94,11 @@ const router = createRouter({
       name: 'login',
       component: LoginVue
     },
+    {
+    path: PUBLIC_ROUTS_VALUE.test,
+      name: 'test',
+      component: () => import('../views/TestVue.vue'),
+    },
   ],
 })
 

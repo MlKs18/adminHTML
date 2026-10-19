@@ -16,10 +16,10 @@ const form = ref( {
   description: "",
 })
 const isLoading = computed(() => store.getters['isLoading']);
-const editUser = () => {
-  //store.dispatch("users/editUser",{
-    //id: router.currentRoute.value.params.id, 
-    //dataForm:form.value});
+const editCategory = () => {
+  store.dispatch("category/editCategory",{
+    id: router.currentRoute.value.params.id, 
+    dataForm:form.value});
 }
 const errorMsg = computed(() => store.getters['category/getErrorMsg']); 
 
@@ -48,7 +48,7 @@ watch(
     <h1 class="edit-user__title">Редактирование категории</h1>
 
 
-    <form class="edit-user__form" @submit.prevent ="editUser">
+    <form class="edit-user__form" @submit.prevent ="editCategory">
       <!-- Аватар -->
       <div class="form-group form-group--avatar">
         <label class="form-label">Аватар</label>
