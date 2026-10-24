@@ -34,3 +34,7 @@ Route::prefix("product")-> group(function () {
     Route::put('/{id}', [\App\Http\Controllers\ProductController::class, 'update']);
     Route::delete('/{id}', [\App\Http\Controllers\ProductController::class, 'destroy']);
 })->name("product");
+
+Route::prefix("auth")-> group(function () {
+    Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
+})->name("auth");
