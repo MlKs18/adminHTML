@@ -9,48 +9,50 @@ const goToNextStep = () => {
 
 <template>
   <main class="main-wrapper">
-    <IconArrowRight @click="goToNextStep" :size="120"/>
-<!--    Этот элемент не убирай-->
+        <!--<IconArrowRight @click="goToNextStep" :size="120"/>-->
+        <!--    Этот элемент не убирай-->
 
-    <ul class="main-menu">
-      <li>
-        <a class="home" href="/">Главная</a>
-      </li>
-
-      <li>/</li>
-
-      <li>
-        <a>Категории</a>
-      </li>
+    <ul class="breadcrumbs-list">
+        <li>
+            <a class="homePage" href="/">Главная</a>
+        </li>
+        <li class="slash">/</li>
+        <li>
+            <a class="pageCategories">Категории</a>
+        </li>
     </ul>
 
-    <h1 class="titleShop">Все категории12121</h1>
+    <h1 class="firstTitle">Все категории</h1>
 
-    <p class="textProducts">Более 1 000 товаров в 8 категориях. Выберите нужную и переходите к каталогу — с удобными фильтрами и сортировкой. </p>
-    <div>
-      <ul class="item-list">
-
-        <img class="first-foto" src="/src/assets/img/images.jpeg" alt="Кросовок">
-
-        <li class="numbersProducts">128 товаров</li>
-        <li class="">Обувь</li>
-        <li class="itemProduct">Кроссовки, ботинки, кеды</li>
-        <li class="">Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок. </li>
-
-        <li class="">
-          <a href="">Кроссовки</a>
-        </li>
-
-        <li>
-          <a class="" href="">ботинки</a>
-        </li>
-        <li>
-          <a class="" href="">кеды</a>
-        </li>
-        <li>
-          <a class="" href="">Смотреть товары</a>
-        </li>
-      </ul>
+    <p class="mainDescription">Более 1 000 товаров в 8 категориях. Выберите нужную и переходите к каталогу — с удобными фильтрами и сортировкой. </p>
+    
+    <div class="wrapper-categories">
+        <ul class="categories-list">
+            <li class="categories-item">
+                <img class="first-foto" src="/src/assets/img/images.jpeg" alt="Кросовок">
+                <span class="product-counter">128 товаров</span>
+                <h3 class="category-title">Обувь</h3>
+                <p class="category-short-description">
+                    Кроссовки, ботинки, кеды
+                </p>
+                <p class="category-description">
+                    Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок. 
+                </p>
+                    <ul class="categories-tags-list">
+                    <li>
+                        <a class="categories-tags-item" href="">Кроссовки</a>
+                    </li>
+                    <li>
+                        <a class="categories-tags-item" href="">ботинки</a>
+                    </li>
+                    <li>
+                        <a class="categories-tags-item" href="">кеды</a>
+                    </li>
+                </ul>
+                    <a class="categories-link">Смотреть товары</a>
+                                        
+            </li>
+        </ul>
     </div>
   </main>
 </template>
@@ -60,7 +62,7 @@ const goToNextStep = () => {
   min-height: 80vh;
 }
 
-.main-menu {
+.breadcrumbs-list {
   display: flex;
   align-items: center;
   gap: 15px;
@@ -69,48 +71,117 @@ const goToNextStep = () => {
   font-size: 12px;
 }
 
-.home {
+.homePage {
   text-decoration: none;
   color: black;
 }
 
-.home:hover {
+.homePage:hover {
   color: #F8A5C2;
 }
 
-.titleShop {
+.firstTitle {
   list-style: none;
   margin: 25px;
   font-weight: bold;
   font-size: 35px;
 }
 
-.textProducts {
+.mainDescription {
   list-style: none;
   margin: 25px;
   letter-spacing: 1px;
 }
 
+.wrapper-categories {
+    padding: 30px;
+}
+
+.categories-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style: none;
+}
+
+.categories-item {
+  width: 33%;
+  margin-right: 0.3%;
+}
+
 .first-foto {
-  position: relative;
-  width: 500px;
-  height: 300px;
-  margin: 20px;
+    position: relative;
+    width: 426px; 
+    height: 266px;
+    transition: transform 0.3s ease;
 }
 
-.numbersProducts {
-  position: absolute;
-  list-style: none;
-  display: inline-block;
-  padding: 0px 8px;
-  border-radius: 50px;
-  background-color: white;
-  z-index: 1;
-  top: 290px;
-  left: 405px;
-  color: #F8A5C2;
-
+.first-foto:hover {
+    transform: scale(1.05);
 }
 
+.product-counter {
+    position: absolute;
+    z-index: 1;
+    font-weight: bold;
+    font-size: 12px;
+    display: inline-block;
+    padding: 3px 10px;
+    background-color: white;
+    border-radius: 50px;
+    top: 290px;
+    left: 340px;
+   
+}
+
+.category-title {
+    position: absolute;
+    z-index: 1;
+    font-weight: bold;
+    font-size: 25px;
+    top: 485px;
+    left: 50px;
+    color: black;
+}
+
+.category-short-description {
+    position: absolute;
+    z-index: 2;
+    font-size: 13px;
+    top: 520px;
+    left: 40px;
+    color: black;
+}
+
+.categories-tags-list {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    list-style: none;
+}
+
+.categories-link {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+    top: 10px;
+    
+}
+
+.categories-link:hover {
+    color: #F8A5C2;
+}
+
+.categories-tags-item {
+    text-decoration: none;
+    color: black;
+}
+
+.categories-tags-item:hover {
+    color: #F8A5C2;
+}
 
 </style>
