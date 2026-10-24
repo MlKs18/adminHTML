@@ -36,7 +36,7 @@ const router = createRouter({
       component: IndexVue,
       meta: { layout: AdminLayouts }
     },
-    
+
     {
       path: PRIVATE_ROUTS_VALUE.editUsers+"/:id",
       name: 'editUser',
@@ -98,6 +98,16 @@ const router = createRouter({
     path: PUBLIC_ROUTS_VALUE.test,
       name: 'test',
       component: () => import('../views/TestVue.vue'),
+    },
+    {
+      path: '/test1',
+      name: 'test1',
+      component: () => import('../views/TestVue1.vue'),
+    },
+    {
+      path: '/test2',
+      name: 'test2',
+      component: () => import('../views/TestVue2.vue'),
     },
   ],
 })
