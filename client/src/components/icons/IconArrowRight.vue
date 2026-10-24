@@ -1,4 +1,7 @@
 <script setup>
+import {PRIVATE_ROUTS_VALUE, PUBLIC_ROUTS_VALUE} from "@/enums/index.js";
+import {RouterLink} from "vue-router";
+
 defineProps({
   size: {
     type: Number,
@@ -45,6 +48,10 @@ defineEmits(['click'])
       </svg>
     </button>
     <h2 class="btn-title">Нажми на меня</h2>
+    <RouterLink :to="PUBLIC_ROUTS_VALUE.test" class="sidebar__link">
+      Вернтуться на страницу с втоей версткой
+
+    </RouterLink>
   </div>
 
 </template>
