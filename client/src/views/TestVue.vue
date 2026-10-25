@@ -1,92 +1,119 @@
 <script setup>
 import IconArrowRight from "@/components/icons/IconArrowRight.vue";
 import {useRouter} from "vue-router";
+import CardItem from "@/components/CardItem.vue";
 const router = useRouter();
 const goToNextStep = () => {
   router.push({ name: 'test1'});
 }
+const data = [
+    {
+        id: 1,
+        img: "/src/assets/img/images.jpeg",
+        counterProduct: 128,
+        title: "Обувь",
+        shortDescription: "Кроссовки, ботинки, кеды",
+        description: "Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок.",
+        tags: ["Кроссовки", "ботинки", "кеды"],
+        link: "/"
+    },
+    {
+        id: 2,
+        img: "/src/assets/img/images1.jpeg",
+        counterProduct: 128,
+        title: "Обувь",
+        shortDescription: "Кроссовки, ботинки, кеды",
+        description: "Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок.",
+        tags: ["Кроссовки", "ботинки", "кеды"],
+        link: "/"
+    },
+    {
+        id: 3,
+        img: "/src/assets/img/images2.jpeg",
+        counterProduct: 128,
+        title: "Всё для комфортной ходьбы и активного образа жизни ",
+        shortDescription: "Кроссовки, ботинки, кеды",
+        description: "Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок.",
+        tags: ["Кроссовки", "ботинки", "кеды"],
+        link: "/"
+    },
+    {
+        id: 4,
+        img: "/src/assets/img/images3.jpeg",
+        counterProduct: 128,
+        title: "Обувь",
+        shortDescription: "Кроссовки, ботинки, кеды",
+        description: "Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок.",
+        tags: ["Кроссовки", "ботинки", "кеды"],
+        link: "/"
+    },
+    {
+        id: 5,
+        img: "/src/assets/img/images4.jpeg",
+        counterProduct: 128,
+        title: "Обувь",
+        shortDescription: "Кроссовки, ботинки, кеды",
+        description: "Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок.",
+        tags: ["Кроссовки", "ботинки", "кеды"],
+        link: "/"
+    },
+    {
+        id: 6,
+        img: "/src/assets/img/images5.jpeg",
+        counterProduct: 128,
+        title: "Обувь",
+        shortDescription: "Кроссовки, ботинки, кеды",
+        description: "Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок.",
+        tags: ["Кроссовки", "ботинки", "кеды"],
+        link: "/"
+    },
+    {
+        id: 7,
+        img: "/src/assets/img/images6.jpeg",
+        title: "Обувь",
+        shortDescription: "Кроссовки, ботинки, кеды",
+        description: "Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок.",
+        tags: ["Кроссовки", "ботинки", "кеды"],
+        link: "/"
+    },
+]
 </script>
 
 <template>
   <main class="main-wrapper">
-        <IconArrowRight @click="goToNextStep" :size="120"/>
-        <!--    Этот элемент не убирай-->
-    <iframe srcdoc="<p>Ты опять решила сделать по своему?</p>
-    <ol>
-      <li>
-        У тебя на этой странице должна быть сетка из списка товаров, а не один товар
-    </li>
-      <li>
-        Там анимация не такая. Там изображение явно больше блока обертки, у него оверфлов хиден, что делает не видным границы и трансофрмация увеличение происходит в рамках этих границ. Хочешь проработаем эффект вместе
-      </li>
-      <li>
-        На таких страницах вся карточка - это ссылка. Соответственно при наведении должен пальчик появлятся
-      </li>
-    </ol>
+    -<IconArrowRight @click="goToNextStep" :size="120"/>
+    <!--    Этот элемент не убирай-->
 
-
-"></iframe>
-    <div class="">!!!!!!!!!</div>
-    <div class="">!!!!!!!!!</div>
-    <div class="">!!!!!!!!!</div>
-    <div class="">!!!!!!!!!</div>
-    <div class="">!!!!!!!!!</div>
-    <div style="font-weight: bold; font-size: 18px; color: red;">Смотри, что происходит, если я добавлю эллементы выше секции с карточками</div>
-    <div style="font-weight: bold; font-size: 18px; color: red;">Почему у тебя заголовок "Обувь" уехал от родителя? Подрос? 18 исполнилось?</div>
-    <div style="font-weight: bold; font-size: 18px; color: red;">Карточка должна быть автономна, выглядеть одинаково как в потоке, так и если я ее вставлю в другое место страницы</div>
-    <div class="">!!!!!!!!!</div>
-    <div class="">!!!!!!!!!</div>
-    <div class="">!!!!!!!!!</div>
-    <div class="">!!!!!!!!!</div>
-    <div class="">!!!!!!!!!</div>
-    <div class="">!!!!!!!!!</div>
     <ul class="breadcrumbs-list">
-        <li>
-            <a class="homePage" href="/">Главная</a>
-        </li>
-        <li class="slash">/</li>
-        <li>
-            <a class="pageCategories">Категории</a>
-        </li>
+      <li>
+        <a class="homePage" href="/">Главная</a>
+      </li>
+      <li class="slash">/</li>
+      <li>
+        <a class="pageCategories">Категории</a>
+      </li>
     </ul>
 
     <h1 class="firstTitle">Все категории</h1>
 
     <p class="mainDescription">Более 1 000 товаров в 8 категориях. Выберите нужную и переходите к каталогу — с удобными фильтрами и сортировкой. </p>
 
-    <div class="wrapper-categories">
-        <ul class="categories-list">
-            <li class="categories-item">
-                <img class="first-foto" src="/src/assets/img/images.jpeg" alt="Кросовок">
-                <span class="product-counter">128 товаров</span>
-                <h3 class="category-title">Обувь</h3>
-                <p class="category-short-description">
-                    Кроссовки, ботинки, кеды
-                </p>
-                <p class="category-description">
-                    Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок.
-                </p>
-                    <ul class="categories-tags-list">
-                    <li>
-                        <a class="categories-tags-item" href="">Кроссовки</a>
-                    </li>
-                    <li>
-                        <a class="categories-tags-item" href="">ботинки</a>
-                    </li>
-                    <li>
-                        <a class="categories-tags-item" href="">кеды</a>
-                    </li>
-                </ul>
-                    <a class="categories-link">Смотреть товары</a>
-              <iframe srcdoc="<p style='color: red;'>В этом месте анимация должна выглядеть так:</p>
-                              <p style='color: red;'>Смотреть товары -></p>
-                              <p style='color: red;'>А в идеале стрелка должна быть в виде свг и она должна отьезжать</p>
-"></iframe>
 
-            </li>
-        </ul>
+    <div class="wrapper-categories">
+
+      <ul class="categories-list">
+        <li 
+        v-for="item in data"
+        :key= "item.id"
+        class="categories-item">
+
+            <CardItem :data="item"/>
+        </li> 
+      </ul>
     </div>
+
   </main>
+
 </template>
 
 <style scoped>
@@ -96,124 +123,56 @@ const goToNextStep = () => {
 
 .breadcrumbs-list {
   display: flex;
-  align-items: center;
-  gap: 15px;
-  list-style: none;
+  justify-content: flex-start;
+  list-style-type: none;
   margin: 10px;
   font-size: 12px;
 }
 
 .homePage {
+  margin-right: 10px;
   text-decoration: none;
-  color: black;
 }
 
-.homePage:hover {
-  color: #F8A5C2;
+.pageCategories {
+  margin-right: 10px;
+}
+
+.slash {
+  margin-right: 10px;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .firstTitle {
-  list-style: none;
-  margin: 25px;
-  font-weight: bold;
+  list-style-type: none;
+  margin: 10px;
+  margin-top: 20px;
   font-size: 35px;
 }
 
 .mainDescription {
-  list-style: none;
-  margin: 25px;
-  letter-spacing: 1px;
+  list-style-type: none;
+  margin: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  margin-top: 20px;
 }
 
 .wrapper-categories {
-    padding: 30px;
+  padding: 30px;
 }
 
 .categories-list {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
+    flex-wrap: wrap;
     list-style: none;
+
 }
 
 .categories-item {
-  width: 33%;
-  margin-right: 0.3%;
-}
-
-.first-foto {
-    position: relative;
-    width: 426px;
-    height: 266px;
-    transition: transform 0.3s ease;
-}
-
-.first-foto:hover {
-    transform: scale(1.05);
-}
-
-.product-counter {
-    position: absolute;
-    z-index: 1;
-    font-weight: bold;
-    font-size: 12px;
-    display: inline-block;
-    padding: 3px 10px;
-    background-color: white;
-    border-radius: 50px;
-    top: 290px;
-    left: 340px;
-
-}
-
-.category-title {
-    position: absolute;
-    z-index: 1;
-    font-weight: bold;
-    font-size: 25px;
-    top: 485px;
-    left: 50px;
-    color: black;
-}
-
-.category-short-description {
-    position: absolute;
-    z-index: 2;
-    font-size: 13px;
-    top: 520px;
-    left: 40px;
-    color: black;
-}
-
-.categories-tags-list {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    justify-content: flex-start;
-    list-style: none;
-}
-
-.categories-link {
-    color: black;
-    font-size: 15px;
-    font-weight: bold;
-    text-decoration: none;
-    position: relative;
-    top: 10px;
-
-}
-
-.categories-link:hover {
-    color: #F8A5C2;
-}
-
-.categories-tags-item {
-    text-decoration: none;
-    color: black;
-}
-
-.categories-tags-item:hover {
-    color: #F8A5C2;
+    width: 33.3%;
+    height: 400px;
 }
 
 </style>
