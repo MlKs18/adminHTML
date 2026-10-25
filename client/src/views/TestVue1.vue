@@ -8,7 +8,7 @@ const goToNextStep = () => {
 </script>
 <template>
   <main class="main-wrapper">
-    <!---<IconArrowRight @click="goToNextStep" :size="120"/>-->
+    -<IconArrowRight @click="goToNextStep" :size="120"/>
     <!--    Этот элемент не убирай-->
 
     <ul class="breadcrumbs-list">
@@ -27,8 +27,8 @@ const goToNextStep = () => {
     <iframe srcdoc="<p>Смотри, до этого момента все норм. Один нюанс. Тег h1 один на странице, по этому ему не обязательно давать класс. Он уникален </p>"></iframe>
     <br/>
     <iframe srcdoc="<p>Далее, делаешь главную обертку для категорий и задаешь ей падинг. И делаешь главнй список </p>"></iframe>
-    
-    
+
+
     <div class="wrapper-categories">
 
       <ul class="categories-list">
@@ -57,7 +57,7 @@ const goToNextStep = () => {
           </ul>
           <a href="">Смотреть товары</a>
         </li>
-        
+
         <li class="categories-item">
           <img class="first-foto" src="/src/assets/img/images1.jpeg" alt="Кросовок">
           <span class="product-counter">128 товаров</span>

@@ -7,6 +7,7 @@ const goToNextStep = () => {
 </script>
 <template>
   <main class="main-wrapper">
+    -<IconArrowRight @click="goToNextStep" :size="120"/>
 
     <ul class="breadcrumbs-list">
       <li>

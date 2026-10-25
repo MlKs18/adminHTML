@@ -9,9 +9,37 @@ const goToNextStep = () => {
 
 <template>
   <main class="main-wrapper">
-        <!--<IconArrowRight @click="goToNextStep" :size="120"/>-->
+        <IconArrowRight @click="goToNextStep" :size="120"/>
         <!--    Этот элемент не убирай-->
+    <iframe srcdoc="<p>Ты опять решила сделать по своему?</p>
+    <ol>
+      <li>
+        У тебя на этой странице должна быть сетка из списка товаров, а не один товар
+    </li>
+      <li>
+        Там анимация не такая. Там изображение явно больше блока обертки, у него оверфлов хиден, что делает не видным границы и трансофрмация увеличение происходит в рамках этих границ. Хочешь проработаем эффект вместе
+      </li>
+      <li>
+        На таких страницах вся карточка - это ссылка. Соответственно при наведении должен пальчик появлятся
+      </li>
+    </ol>
 
+
+"></iframe>
+    <div class="">!!!!!!!!!</div>
+    <div class="">!!!!!!!!!</div>
+    <div class="">!!!!!!!!!</div>
+    <div class="">!!!!!!!!!</div>
+    <div class="">!!!!!!!!!</div>
+    <div style="font-weight: bold; font-size: 18px; color: red;">Смотри, что происходит, если я добавлю эллементы выше секции с карточками</div>
+    <div style="font-weight: bold; font-size: 18px; color: red;">Почему у тебя заголовок "Обувь" уехал от родителя? Подрос? 18 исполнилось?</div>
+    <div style="font-weight: bold; font-size: 18px; color: red;">Карточка должна быть автономна, выглядеть одинаково как в потоке, так и если я ее вставлю в другое место страницы</div>
+    <div class="">!!!!!!!!!</div>
+    <div class="">!!!!!!!!!</div>
+    <div class="">!!!!!!!!!</div>
+    <div class="">!!!!!!!!!</div>
+    <div class="">!!!!!!!!!</div>
+    <div class="">!!!!!!!!!</div>
     <ul class="breadcrumbs-list">
         <li>
             <a class="homePage" href="/">Главная</a>
@@ -25,7 +53,7 @@ const goToNextStep = () => {
     <h1 class="firstTitle">Все категории</h1>
 
     <p class="mainDescription">Более 1 000 товаров в 8 категориях. Выберите нужную и переходите к каталогу — с удобными фильтрами и сортировкой. </p>
-    
+
     <div class="wrapper-categories">
         <ul class="categories-list">
             <li class="categories-item">
@@ -36,7 +64,7 @@ const goToNextStep = () => {
                     Кроссовки, ботинки, кеды
                 </p>
                 <p class="category-description">
-                    Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок. 
+                    Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок.
                 </p>
                     <ul class="categories-tags-list">
                     <li>
@@ -50,7 +78,11 @@ const goToNextStep = () => {
                     </li>
                 </ul>
                     <a class="categories-link">Смотреть товары</a>
-                                        
+              <iframe srcdoc="<p style='color: red;'>В этом месте анимация должна выглядеть так:</p>
+                              <p style='color: red;'>Смотреть товары -></p>
+                              <p style='color: red;'>А в идеале стрелка должна быть в виде свг и она должна отьезжать</p>
+"></iframe>
+
             </li>
         </ul>
     </div>
@@ -111,7 +143,7 @@ const goToNextStep = () => {
 
 .first-foto {
     position: relative;
-    width: 426px; 
+    width: 426px;
     height: 266px;
     transition: transform 0.3s ease;
 }
@@ -131,7 +163,7 @@ const goToNextStep = () => {
     border-radius: 50px;
     top: 290px;
     left: 340px;
-   
+
 }
 
 .category-title {
@@ -168,7 +200,7 @@ const goToNextStep = () => {
     text-decoration: none;
     position: relative;
     top: 10px;
-    
+
 }
 
 .categories-link:hover {
