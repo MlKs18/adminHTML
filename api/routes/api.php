@@ -38,3 +38,4 @@ Route::prefix("product")-> group(function () {
 Route::prefix("auth")-> group(function () {
     Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
 })->name("auth");
+ Route::get('/test', [\App\Http\Controllers\TestController::class, 'index']);
