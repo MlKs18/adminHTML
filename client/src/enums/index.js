@@ -3,11 +3,7 @@ export const PRIVATE_ROUTS_VALUE = {
     users: '/admin/users',
     editUsers: '/admin/user',
     categories: '/admin/categories',
-};
-
-export const AUTH_ROUTS_VALUE = {
-    login: '/auth/login',
-    register: '/auth/register',
+    curt: '/curt',
 };
 
 export const PUBLIC_ROUTS_VALUE = {
@@ -16,6 +12,6 @@ export const PUBLIC_ROUTS_VALUE = {
     catalog: '/catalog',
     about: '/about',
     product: '/product',
-    curt: '/curt',
-    test: '/test123'
+    test: '/test123',
+    auth: '/auth',
 };

@@ -2,17 +2,16 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import  DashboardVue  from '../views/admin/DashboardVue.vue'
 import AdminLayouts from '@/layouts/AdminLayouts.vue'
-import {AUTH_ROUTS_VALUE, PRIVATE_ROUTS_VALUE, PUBLIC_ROUTS_VALUE} from '@/enums/index.js'
+import {PRIVATE_ROUTS_VALUE, PUBLIC_ROUTS_VALUE} from '@/enums/index.js'
 import AdminUsers from '@/views/admin/users/AdminUsers.vue'
 import EditUser from '@/views/admin/users/EditUser.vue'
 import CategoryFront from "@/views/CategoryFront.vue";
 import CatalogFront from "@/views/CatalogFront.vue";
 import ProductItemFront from "@/views/ProductItemFront.vue";
 import CurtVue from "@/views/CurtVue.vue";
-import RegistrationVue from "@/views/auth/RegistrationVue.vue";
-import LoginVue from "@/views/auth/LoginVue.vue";
 import IndexVue from '@/views/admin/categories/IndexVue.vue'
 import EditVue from '@/views/admin/categories/EditVue.vue'
+import AuthLayouts from '@/layouts/AuthLayouts.vue'
 
 
 const router = createRouter({
@@ -85,14 +84,10 @@ const router = createRouter({
     },
 
     {
-      path: AUTH_ROUTS_VALUE.register,
-      name: 'register',
-      component: RegistrationVue
-    },
-    {
-      path: AUTH_ROUTS_VALUE.login,
-      name: 'login',
-      component: LoginVue
+      path: PUBLIC_ROUTS_VALUE.auth,
+      name: 'auth',
+      component: () => import('../views/auth/IndexVue.vue'),
+      meta: { layout: AuthLayouts }
     },
     {
     path: PUBLIC_ROUTS_VALUE.test,

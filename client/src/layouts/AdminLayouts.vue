@@ -20,7 +20,7 @@ import AdminTopbar from '@/components/AdminTopbar.vue';
 </div>
 </template>
 
-<style>
+<style scoped>
 
 
 
