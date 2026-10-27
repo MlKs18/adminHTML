@@ -1,5 +1,9 @@
 <script setup>
-
+  import { useStore } from 'vuex';
+import LoadingVue from "@/components/LoadingVue.vue";
+import { computed } from 'vue';
+const store = useStore();
+const categories = computed(() => store.getters['category/getCategories']);
 </script>
 
 <template>
@@ -26,28 +30,28 @@
   <section class="section">
     <div class="container">
       <div class="categories">
-
+        <template
+        v-for="category in categories"
+        :key="category.id">
         <!-- Обувь -->
         <a href="#" class="category">
           <div class="category__media">
-            <span class="category__count-badge">128 товаров</span>
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80"
-                  alt="Обувь">
+            <span class="category__count-badge">{{category.counterProduct}} товаров</span>
+            <img :src="category.img"
+                  :alt="category.title">
             <div class="category__name-overlay">
-              <h2 class="category__name">Обувь</h2>
-              <span class="category__meta">Кроссовки, ботинки, кеды</span>
+              <h2 class="category__name">{{category.title}}</h2>
+              <span class="category__meta">{{ category.shortDescription }}</span>
             </div>
           </div>
           <div class="category__body">
             <p class="category__desc">
-              Всё для комфортной ходьбы и активного образа жизни —
-              от беговых кроссовок до зимних ботинок.
+              {{ category.description }}
             </p>
             <div class="subcats">
-              <span class="subcat">Кроссовки</span>
-              <span class="subcat">Ботинки</span>
-              <span class="subcat">Кеды</span>
-              <span class="subcat">+3</span>
+              <span class="subcat"
+              v-for="tag in category.tags"
+              :key="tag">{{tag}}</span>
             </div>
             <div class="category__footer">
                       <span class="category__link">
@@ -60,240 +64,8 @@
             </div>
           </div>
         </a>
-
-        <!-- Одежда -->
-        <a href="#" class="category">
-          <div class="category__media">
-            <span class="category__count-badge">347 товаров</span>
-            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80"
-                  alt="Одежда">
-            <div class="category__name-overlay">
-              <h2 class="category__name">Одежда</h2>
-              <span class="category__meta">Верхняя одежда, футболки, джинсы</span>
-            </div>
-          </div>
-          <div class="category__body">
-            <p class="category__desc">
-              Базовая и дизайнерская одежда на каждый день.
-              Только проверенные бренды и честные размеры.
-            </p>
-            <div class="subcats">
-              <span class="subcat">Куртки</span>
-              <span class="subcat">Футболки</span>
-              <span class="subcat">Джинсы</span>
-              <span class="subcat">+5</span>
-            </div>
-            <div class="category__footer">
-                      <span class="category__link">
-                          Смотреть товары
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                              <line x1="5" y1="12" x2="19" y2="12"/>
-                              <polyline points="12 5 19 12 12 19"/>
-                          </svg>
-                      </span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Аксессуары -->
-        <a href="#" class="category">
-          <div class="category__media">
-            <span class="category__count-badge">94 товара</span>
-            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80"
-                  alt="Аксессуары">
-            <div class="category__name-overlay">
-              <h2 class="category__name">Аксессуары</h2>
-              <span class="category__meta">Часы, сумки, ремни</span>
-            </div>
-          </div>
-          <div class="category__body">
-            <p class="category__desc">
-              Детали, которые делают образ. От классических
-              часов до стильных сумок и кошельков.
-            </p>
-            <div class="subcats">
-              <span class="subcat">Часы</span>
-              <span class="subcat">Сумки</span>
-              <span class="subcat">Ремни</span>
-            </div>
-            <div class="category__footer">
-                      <span class="category__link">
-                          Смотреть товары
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                              <line x1="5" y1="12" x2="19" y2="12"/>
-                              <polyline points="12 5 19 12 12 19"/>
-                          </svg>
-                      </span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Гаджеты -->
-        <a href="#" class="category">
-          <div class="category__media">
-            <span class="category__count-badge">212 товаров</span>
-            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80"
-                  alt="Гаджеты">
-            <div class="category__name-overlay">
-              <h2 class="category__name">Гаджеты</h2>
-              <span class="category__meta">Смартфоны, наушники, умный дом</span>
-            </div>
-          </div>
-          <div class="category__body">
-            <p class="category__desc">
-              Техника и электроника: от беспроводных наушников
-              до устройств умного дома.
-            </p>
-            <div class="subcats">
-              <span class="subcat">Смартфоны</span>
-              <span class="subcat">Наушники</span>
-              <span class="subcat">Умный дом</span>
-              <span class="subcat">+4</span>
-            </div>
-            <div class="category__footer">
-                      <span class="category__link">
-                          Смотреть товары
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                              <line x1="5" y1="12" x2="19" y2="12"/>
-                              <polyline points="12 5 19 12 12 19"/>
-                          </svg>
-                      </span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Дом -->
-        <a href="#" class="category">
-          <div class="category__media">
-            <span class="category__count-badge">156 товаров</span>
-            <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&q=80"
-                  alt="Дом">
-            <div class="category__name-overlay">
-              <h2 class="category__name">Дом</h2>
-              <span class="category__meta">Текстиль, посуда, декор</span>
-            </div>
-          </div>
-          <div class="category__body">
-            <p class="category__desc">
-              Уют начинается с деталей. Всё для дома:
-              от постельного белья до декора и посуды.
-            </p>
-            <div class="subcats">
-              <span class="subcat">Текстиль</span>
-              <span class="subcat">Посуда</span>
-              <span class="subcat">Декор</span>
-            </div>
-            <div class="category__footer">
-                      <span class="category__link">
-                          Смотреть товары
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                              <line x1="5" y1="12" x2="19" y2="12"/>
-                              <polyline points="12 5 19 12 12 19"/>
-                          </svg>
-                      </span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Красота -->
-        <a href="#" class="category">
-          <div class="category__media">
-            <span class="category__count-badge">88 товаров</span>
-            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80"
-                  alt="Красота">
-            <div class="category__name-overlay">
-              <h2 class="category__name">Красота</h2>
-              <span class="category__meta">Уход, макияж, парфюм</span>
-            </div>
-          </div>
-          <div class="category__body">
-            <p class="category__desc">
-              Косметика и уход за собой: от корейских сывороток
-              до парфюмерии известных брендов.
-            </p>
-            <div class="subcats">
-              <span class="subcat">Уход за кожей</span>
-              <span class="subcat">Макияж</span>
-              <span class="subcat">Парфюм</span>
-            </div>
-            <div class="category__footer">
-                      <span class="category__link">
-                          Смотреть товары
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                              <line x1="5" y1="12" x2="19" y2="12"/>
-                              <polyline points="12 5 19 12 12 19"/>
-                          </svg>
-                      </span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Спорт -->
-        <a href="#" class="category">
-          <div class="category__media">
-            <span class="category__count-badge">74 товара</span>
-            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80"
-                  alt="Спорт">
-            <div class="category__name-overlay">
-              <h2 class="category__name">Спорт</h2>
-              <span class="category__meta">Тренажёры, экипировка, питание</span>
-            </div>
-          </div>
-          <div class="category__body">
-            <p class="category__desc">
-              Всё для тренировок дома и в зале:
-              инвентарь, экипировка и спортивное питание.
-            </p>
-            <div class="subcats">
-              <span class="subcat">Инвентарь</span>
-              <span class="subcat">Экипировка</span>
-              <span class="subcat">Питание</span>
-            </div>
-            <div class="category__footer">
-                      <span class="category__link">
-                          Смотреть товары
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                              <line x1="5" y1="12" x2="19" y2="12"/>
-                              <polyline points="12 5 19 12 12 19"/>
-                          </svg>
-                      </span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Книги -->
-        <a href="#" class="category">
-          <div class="category__media">
-            <span class="category__count-badge">521 товар</span>
-            <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=800&q=80"
-                  alt="Книги">
-            <div class="category__name-overlay">
-              <h2 class="category__name">Книги</h2>
-              <span class="category__meta">Художественная, нон-фикшн, детская</span>
-            </div>
-          </div>
-          <div class="category__body">
-            <p class="category__desc">
-              От классики до современных бестселлеров. Более
-              500 книг в бумажном и электронном формате.
-            </p>
-            <div class="subcats">
-              <span class="subcat">Художественная</span>
-              <span class="subcat">Нон-фикшн</span>
-              <span class="subcat">Детская</span>
-              <span class="subcat">+2</span>
-            </div>
-            <div class="category__footer">
-                      <span class="category__link">
-                          Смотреть товары
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                              <line x1="5" y1="12" x2="19" y2="12"/>
-                              <polyline points="12 5 19 12 12 19"/>
-                          </svg>
-                      </span>
-            </div>
-          </div>
-        </a>
+        </template>
+       
 
       </div>
     </div>

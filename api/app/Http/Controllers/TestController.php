@@ -9,12 +9,8 @@ class TestController extends Controller
 {
     public function index () {
 
-        $employee= new Employee;
-        $employee->name='john';
-        $employee->age=25;
-        $employee->salary=2345;
-        echo $employee->show();
-        dd($employee);
+        $employee= new Employee('Sasa', "1000");
+        dd($employee->setName("Masha")->getName());
         return 321;
 
     }

@@ -6,7 +6,78 @@ const categoryModule = {
   state: () => ({
     items: [],
     item: null,
-    errorMsg: {}
+    errorMsg: {},
+    categories: [
+    {
+        id: 1,
+        img: "/src/assets/img/images.jpeg",
+        counterProduct: 128,
+        title: "Обувь",
+        shortDescription: "Кроссовки, ботинки, кеды",
+        description: "Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок.",
+        tags: ["Кроссовки", "ботинки", "кеды"],
+        link: "/"
+    },
+    {
+        id: 2,
+        img: "/src/assets/img/images1.jpeg",
+        counterProduct: 128,
+        title: "Обувь",
+        shortDescription: "Кроссовки, ботинки, кеды",
+        description: "Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок.",
+        tags: ["Кроссовки", "ботинки", "кеды"],
+        link: "/"
+    },
+    {
+        id: 3,
+        img: "/src/assets/img/images2.jpeg",
+        counterProduct: 128,
+        title: "Всё для комфортной ходьбы и активного образа жизни ",
+        shortDescription: "Кроссовки, ботинки, кеды",
+        description: "Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок.",
+        tags: ["Кроссовки", "ботинки", "кеды"],
+        link: "/"
+    },
+    {
+        id: 4,
+        img: "/src/assets/img/images3.jpeg",
+        counterProduct: 128,
+        title: "Обувь",
+        shortDescription: "Кроссовки, ботинки, кеды",
+        description: "Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок.",
+        tags: ["Кроссовки", "ботинки", "кеды"],
+        link: "/"
+    },
+    {
+        id: 5,
+        img: "/src/assets/img/images4.jpeg",
+        counterProduct: 128,
+        title: "Обувь",
+        shortDescription: "Кроссовки, ботинки, кеды",
+        description: "Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок.",
+        tags: ["Кроссовки", "ботинки", "кеды"],
+        link: "/"
+    },
+    {
+        id: 6,
+        img: "/src/assets/img/images5.jpeg",
+        counterProduct: 128,
+        title: "Обувь",
+        shortDescription: "Кроссовки, ботинки, кеды",
+        description: "Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок.",
+        tags: ["Кроссовки", "ботинки", "кеды"],
+        link: "/"
+    },
+    {
+        id: 7,
+        img: "/src/assets/img/images6.jpeg",
+        title: "Обувь",
+        shortDescription: "Кроссовки, ботинки, кеды",
+        description: "Всё для комфортной ходьбы и активного образа жизни — от беговых кроссовок до зимних ботинок.",
+        tags: ["Кроссовки", "ботинки", "кеды"],
+        link: "/"
+    },
+]
 
   }),
 
@@ -20,6 +91,9 @@ const categoryModule = {
     getErrorMsg(state) {
       return state.errorMsg
     },
+    getCategories(state) {
+      return state.categories
+    }
   },
 
   mutations: {

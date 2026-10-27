@@ -6,6 +6,7 @@ import { PRIVATE_ROUTS_VALUE } from '@/enums';
 import { useStore } from 'vuex';
 import LoadingVue from "@/components/LoadingVue.vue";
 const store = useStore();
+
 const router = useRouter();
 
 const goToEdit = (id) => {
