@@ -14,6 +14,14 @@ class TestController extends Controller
         return 321;
 
     }
+
+    public function learn () {
+
+        return view('learn');
+
+    }
+
+
 }
 
 
